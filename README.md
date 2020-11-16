@@ -9,7 +9,7 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run dev 或者 yarn dev
 
 # build for production with minification
 npm run build
