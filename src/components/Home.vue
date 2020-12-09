@@ -3,12 +3,12 @@
     <div class="title">设置</div>
     <div>
       <div class="item-box">
-        <el-input class="hersname" v-model="hersValue" size="small" placeholder="请输入内容">
+        <el-input class="hersname" v-model="hersValue" size="small" maxlength="4" placeholder="请输入内容">
           <template class="hersname-template" slot="prepend">需要表白的人</template>
         </el-input>
       </div>
       <div class="item-box">
-        <el-input class="yourname" v-model="yourValue" size="small" placeholder="请输入内容">
+        <el-input class="yourname" v-model="yourValue" size="small" maxlength="4" placeholder="请输入内容">
           <template slot="prepend">你的名字</template>
         </el-input>
       </div>
@@ -43,7 +43,7 @@
       </div>
       <div class="item-box flex">
         <div>
-          <el-input class="yourname" v-model="content" size="small" placeholder="暂不支持" :disabled="true">
+          <el-input class="yourname" v-model="content" size="small" placeholder="不支持" :disabled="true">
             <template slot="prepend">红包设置</template>
           </el-input>
         </div>
@@ -67,17 +67,25 @@
       </div>
       <div class="seq-box">
         <div v-if="seqNo">
-          <div class="seq-tip">请牢记此序列号</div>
+          <div class="seq-tip">编号</div>
           <div class="seq-no">{{seqNo}}</div>
+          <div>请前往小程序使用</div>
           <el-button v-clipboard:copy="seqNo" v-clipboard:success="copy">复制序列号</el-button>
         </div>
       </div>
       <div class="">
         <el-button type="primary" :disabled="isDisabled" size="medium" @click="send">确定</el-button>
       </div>
-      <viewer class="zsm" :images="images">
-        <img v-for="src in images" :src="src" :key="src" style="width:100%;height:100%">
-      </viewer>
+      <div class="zsm-wrap">
+        <div class="zsm-box">
+          <viewer class="zsm" :images="xcximages">
+            <img v-for="src in xcximages" :src="src" :key="src" style="width:100%;height:100%">
+          </viewer>
+          <viewer class="zsm" :images="images">
+            <img v-for="src in images" :src="src" :key="src" style="width:100%;height:100%">
+          </viewer>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -92,8 +100,11 @@ export default {
       images: [
         '/static/images/zsm.jpg'
       ],
+      xcximages: [
+        '/static/images/xcx.jpg'
+      ],
       seqNo: '',
-      bgName: '风雨无阻.mp3',
+      bgName: '爱的就是你.mp3',
       // fileList: [],
       hersValue: '',
       yourValue: '',
@@ -117,8 +128,8 @@ export default {
     send () {
       const config = {
         headers: {
-          // 'Content-Type': 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         }
       }
       const loading = this.$loading({
@@ -209,6 +220,10 @@ export default {
 </script>
 
 <style>
+.Home {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
 .yourname > div {
   width: 84px;
   text-align: center;
@@ -220,14 +235,14 @@ export default {
 </style>
 <style scoped>
 .item-box {
-  margin: 30px 0;
+  margin: 24px 0;
 }
 .title {
   font-size: 22px;
   font-weight: 400px;
 }
 .seq-box {
-  height: 150px;
+  height: 162px;
 }
 .seq-no {
   font-size: 28px;
@@ -239,11 +254,20 @@ export default {
   font-size: 22px;
   font-weight: 400;
 }
-.zsm {
-  width: 100px;
+.zsm-wrap {
+  width: 100%;
   height: 100px;
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 10px;
+}
+.zsm-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.zsm {
+  width: 100px;
+  height: 100px;
 }
 </style>
