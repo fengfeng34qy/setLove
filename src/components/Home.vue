@@ -13,7 +13,7 @@
         </el-input>
       </div>
       <div class="item-box">
-        <el-input class="yourname" v-model="content" size="small" placeholder="正在开发中..." :disabled="true">
+        <el-input class="yourname" v-model="content" size="small" placeholder="暂不支持" :disabled="true">
           <template slot="prepend">表白内容</template>
         </el-input>
       </div>
@@ -73,7 +73,7 @@
           <el-button v-clipboard:copy="seqNo" v-clipboard:success="copy">复制序列号</el-button>
         </div>
       </div>
-      <div class="">
+      <div class="" style="margin-bottom: 20px;">
         <el-button type="primary" :disabled="isDisabled" size="medium" @click="send">确定</el-button>
       </div>
       <div class="zsm-wrap">
@@ -257,9 +257,7 @@ export default {
 .zsm-wrap {
   width: 100%;
   height: 100px;
-  position: absolute;
-  right: 0;
-  bottom: 10px;
+  margin-bottom: 20px;
 }
 .zsm-box {
   display: flex;
