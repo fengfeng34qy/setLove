@@ -12,9 +12,14 @@
           <template slot="prepend">你的名字</template>
         </el-input>
       </div>
-      <div class="item-box">
+      <!-- <div class="item-box">
         <el-input class="yourname" v-model="content" size="small" placeholder="暂不支持" :disabled="true">
           <template slot="prepend">表白内容</template>
+        </el-input>
+      </div> -->
+      <div class="item-box">
+        <el-input class="yourname" v-model="content" size="small" placeholder="接收反馈">
+          <template slot="prepend">邮箱</template>
         </el-input>
       </div>
       <div class="item-box">
@@ -65,16 +70,69 @@
           </el-upload>
         </div>
       </div>
+      <div>
+        <h3>表白内容</h3>
+        <!-- <span style="background:#F5F7FA;padding:6px 10px;border-radius:4px;color: #C0C4CC;">暂时不能设置</span> -->
+      </div>
+      <div class="item-box flex">
+        <div class="flex" align-items="center" style="margin-left:20px;width:100%;">
+          <el-checkbox v-model="checked1" disabled>
+            <el-input v-model="checked1value" size="small" disabled></el-input>
+          </el-checkbox>
+        </div>
+      </div>
+      <div class="item-box flex">
+        <div class="flex" align-items="center" style="margin-left:20px;width:100%;">
+          <el-checkbox v-model="checked1" disabled>
+            <el-input v-model="checked2value" size="small" disabled></el-input>
+          </el-checkbox>
+        </div>
+      </div>
+      <div class="item-box flex">
+        <div class="flex" align-items="center" style="margin-left:20px;width:100%;">
+          <el-checkbox v-model="checked1" disabled>
+            <el-input v-model="checked3value" size="small" disabled></el-input>
+          </el-checkbox>
+        </div>
+      </div>
+      <div class="item-box flex">
+        <div class="flex" align-items="center" style="margin-left:20px;width:100%;">
+          <el-checkbox v-model="checked1" disabled>
+            <el-input v-model="checked4value" size="small" disabled></el-input>
+          </el-checkbox>
+        </div>
+      </div>
+      <div class="item-box flex">
+        <div class="flex" align-items="center" style="margin-left:20px;width:100%;">
+          <el-checkbox v-model="checked1" disabled>
+            <el-input v-model="checked5value" size="small" disabled></el-input>
+          </el-checkbox>
+        </div>
+      </div>
+      <div class="item-box flex">
+        <div class="flex" align-items="center" style="margin-left:20px;width:100%;">
+          <el-checkbox v-model="checked1" disabled>
+            <el-input v-model="checked6value" size="small" disabled></el-input>
+          </el-checkbox>
+        </div>
+      </div>
+      <div class="item-box flex">
+        <div class="flex" align-items="center" style="margin-left:20px;width:100%;">
+          <el-checkbox v-model="checked1" disabled>
+            <el-input v-model="checked7value" size="small" disabled></el-input>
+          </el-checkbox>
+        </div>
+      </div>
       <div class="seq-box">
         <div v-if="seqNo">
           <div class="seq-tip">编号</div>
           <div class="seq-no">{{seqNo}}</div>
           <div>请前往小程序使用</div>
-          <el-button v-clipboard:copy="seqNo" v-clipboard:success="copy">复制序列号</el-button>
+          <el-button v-clipboard:copy="seqNo" v-clipboard:success="copy">复制编号</el-button>
         </div>
       </div>
       <div class="" style="margin-bottom: 20px;">
-        <el-button type="primary" :disabled="isDisabled" size="medium" @click="send">确定</el-button>
+        <el-button type="primary" :disabled="isDisabled" size="medium" @click="send">生成编号</el-button>
       </div>
       <div class="zsm-wrap">
         <div class="zsm-box">
@@ -97,6 +155,14 @@ export default {
   name: 'Home',
   data () {
     return {
+      checked1: true,
+      checked1value: '你是一个特别好(pàng)的女生。',
+      checked2value: '也是一个特别漂(chòu)亮(měi)的女生。',
+      checked3value: '虽然我们接触的时间不长,只有短短的几个月,却让我感觉很开心',
+      checked4value: '那时我的心七上八下的,我想想这就是一见钟情',
+      checked5value: '只要你愿意 我可以陪你去吃 你喜欢吃的东西',
+      checked6value: '只要你愿意 我可以陪你去 任何你想去的地方',
+      checked7value: '总之，只要你愿意我会一直陪着你',
       images: [
         '/static/images/zsm.jpg'
       ],
